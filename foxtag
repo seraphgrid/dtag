@@ -9,7 +9,7 @@ if [ -n "$SELECTED_FILE" ]; then
     TAGS=("Album" "Artist" "Comment" "Genre" "Title" "Track" "Year" "Clear All" "Exit")
 
 	while true; do
-         SELECTED_TAG=$(printf '%s\n' "${TAGS[@]}" | dmenu -fn "Liberation Mono" -nb black -nf white -sb white -sf black -p "Select a tag to modify:")
+         SELECTED_TAG=$(printf '%s\n' "${TAGS[@]}" | dmenu -fn "Liberation Mono" -nb black -nf white -sb white -sf black -p "$(echo $SELECTED_FILE | awk -F/ '{print $NF}')")
        	 case "$SELECTED_TAG" in
        	     Album)
        	         NEW_VALUE=$(echo "" | dmenu -fn "Liberation Mono" -fn "Liberation Mono" -nb black -nf white -sb white -sf black -p "::album")
